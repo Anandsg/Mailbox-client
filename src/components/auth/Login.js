@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { checkValidateData } from "../../utils/validation";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -31,36 +30,25 @@ const Login = () => {
                     return;
                 }
 
-                const userCredential = await createUserWithEmailAndPassword(auth, email.current.value,
-                    password.current.value,
-                    confirmPassword.current ?
-                        confirmPassword.current.value : null);
+                const userCredential = await createUserWithEmailAndPassword(
+                    auth,
+                    email.current.value,
+                    password.current.value
+                );
+
                 const user = userCredential.user;
                 console.log(user);
-
+                navigate('/inbox');
                 const loginDetails = { token: user.accessToken, email: user.email };
                 localStorage.setItem('details', JSON.stringify(loginDetails));
 
-                // Send verification email
-                const mailVerify = await axios.post(
-                    'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyDO2RcyM6pWLSv9E5MBtzGACEPx2Chtqxg',
-                    {
-                        requestType: 'VERIFY_EMAIL',
-                        idToken: user.accessToken,
-                    }
-                );
-
-                console.log(mailVerify);
-
-                if (mailVerify.status === 200) {
-                }
             } else {
                 // Login logic
                 const userCredential = await signInWithEmailAndPassword(auth, email.current.value,
                     password.current.value);
                 const user = userCredential.user;
                 console.log(user);
-                navigate('/welcome');
+                navigate('/inbox');
             }
 
         } catch (error) {
