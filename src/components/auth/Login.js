@@ -33,6 +33,7 @@ const Login = () => {
                 const userCredential = await createUserWithEmailAndPassword(
                     auth,
                     email.current.value,
+
                     password.current.value
                 );
 
@@ -41,6 +42,7 @@ const Login = () => {
                 navigate('/inbox');
                 const loginDetails = { token: user.accessToken, email: user.email };
                 localStorage.setItem('details', JSON.stringify(loginDetails));
+                localStorage.setItem('userEmail', email.current.value)
 
             } else {
                 // Login logic
@@ -49,6 +51,8 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(user);
                 navigate('/inbox');
+                localStorage.setItem('userEmail', email.current.value)
+                console.log(localStorage.setItem('userEmail', email.current.value))
             }
 
         } catch (error) {

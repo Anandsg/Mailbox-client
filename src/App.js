@@ -4,6 +4,8 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import Inbox from './components/pages/Inbox';
 import Compose from './components/pages/Compose';
+import SentEmail from './components/pages/SentMail';
+import ViewMail from './components/pages/ViewMail';
 
 const App = () => {
 
@@ -15,6 +17,8 @@ const App = () => {
           <Route path='/main' element={<MainPage />} />
           <Route path='/compose' element={<Compose />} />
           <Route path='/inbox' element={<Inbox />} />
+          <Route path='/sent' element={<SentEmail />} />
+          <Route path="/emails/:emailId" element={<ViewMail />} />
         </Routes>
       </div>
     </Router>

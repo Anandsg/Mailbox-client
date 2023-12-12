@@ -2,8 +2,18 @@ import { faInbox, faPaperPlane, faPencil } from '@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { fetchEmails } from '../store/emailSlice';
+import { useDispatch } from 'react-redux';
+
 
 const Header = () => {
+    const dispatch = useDispatch();
+
+    const sentHanlder = () => {
+        dispatch(fetchEmails());
+        console.log(dispatch)
+    }
+
     return (
         <>
             <div className='shadow-lg p-4 flex items-center justify-between'>
@@ -21,7 +31,8 @@ const Header = () => {
                     </Link>
                     <Link to='/sent' className="flex items-center px-3">
                         <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
-                        <p className='px-1'>Sent Items</p>
+                        <p onClick={sentHanlder}
+                            className='px-1'>Sent Items</p>
                     </Link>
                 </div>
 

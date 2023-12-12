@@ -11,6 +11,9 @@ const Inbox = () => {
     const navigate = useNavigate();
 
     const userEmail = localStorage.getItem("userEmail");
+    console.log(userEmail);
+
+
 
     const { deleteResource, isDeleting } = useDeleteRequest();
 
@@ -32,15 +35,17 @@ const Inbox = () => {
     );
 
     const markEmailAsUnread = (emailId) => {
+        console.log(emailId)
         fetch(
-            `https://mailbox-client-ce33a-default-rtdb.firebaseio.com/email/${emailId}.json`
+            `https://mailbox-client-62c32-default-rtdb.firebaseio.com/email/${emailId}.json`
         )
             .then((response) => response.json())
+
             .then((emailData) => {
                 emailData.blueTick = false;
 
                 fetch(
-                    `https://mailbox-client-ce33a-default-rtdb.firebaseio.com/email/${emailId}.json`,
+                    `https://mailbox-client-62c32-default-rtdb.firebaseio.com/email/${emailId}.json`,
                     {
                         method: "PUT",
                         body: JSON.stringify(emailData),
@@ -64,7 +69,7 @@ const Inbox = () => {
 
 
     const deleteEmail = (emailId) => {
-        deleteResource(`https://mailbox-client-ce33a-default-rtdb.firebaseio.com/email/${emailId}.json`)
+        deleteResource(`https://mailbox-client-62c32-default-rtdb.firebaseio.com/email/${emailId}.json`)
             .then((data) => {
                 console.log('Email deleted from Firebase');
                 dispatch({ type: 'email/deleteEmail', payload: emailId });
