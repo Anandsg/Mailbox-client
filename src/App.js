@@ -2,7 +2,6 @@ import React from 'react';
 import Login from './components/auth/Login';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
-import TextEditor from './components/pages/TextEditor';
 import Inbox from './components/pages/Inbox';
 import Compose from './components/pages/Compose';
 
