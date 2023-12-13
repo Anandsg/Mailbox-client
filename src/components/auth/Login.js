@@ -39,7 +39,7 @@ const Login = () => {
 
                 const user = userCredential.user;
                 console.log(user);
-                navigate('/inbox');
+                navigate('/compose');
                 const loginDetails = { token: user.accessToken, email: user.email };
                 localStorage.setItem('details', JSON.stringify(loginDetails));
                 localStorage.setItem('userEmail', email.current.value)
@@ -50,7 +50,7 @@ const Login = () => {
                     password.current.value);
                 const user = userCredential.user;
                 console.log(user);
-                navigate('/inbox');
+                navigate('/compose');
                 localStorage.setItem('userEmail', email.current.value)
                 console.log(localStorage.setItem('userEmail', email.current.value))
             }

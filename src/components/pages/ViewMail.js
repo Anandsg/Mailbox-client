@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-const userEmail = localStorage.getItem("userEmail");
 const ViewMail = () => {
   const { emailId } = useParams();
   const navigate = useNavigate();
@@ -14,24 +13,21 @@ const ViewMail = () => {
   if (!email) {
     return <div>Email not found</div>;
   }
-
   return (
-    <div className='veiwMail-div'>
-      <div className="navbar">
-        <div className="mailbox-content">
-          <span className="font-bold">Welcome to your mailbox</span>
-        </div>
-      </div>
-      <div className="view-mail-container">
-        <div className="view-mail-header">
-          <h2 className="view-mail-title">Email Details</h2>
-          <button className="view-mail-back-button" onClick={() => navigate('/EmailList')}>
+    <div className="bg-gray-100 min-h-screen p-4">
+      <div className="max-w-2xl mx-auto">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-2xl font-bold">Email Details</h2>
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={() => navigate('/inbox')}
+          >
             Back
           </button>
         </div>
-        <div className="view-mail-content">
-          <p><strong>Sender:</strong> {email.sender}</p>
-          <p><strong>Subject:</strong> {email.subject}</p>
+        <div className="bg-white p-6 rounded shadow-md">
+          <p className="mb-4"><strong>Sender:</strong> {email.sender}</p>
+          <p className="mb-4"><strong>Subject:</strong> {email.subject}</p>
           <p><strong>Message:</strong> {email.text}</p>
         </div>
       </div>
