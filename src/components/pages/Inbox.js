@@ -19,7 +19,7 @@ const Inbox = () => {
 
 
     const backHandler = () => {
-        navigate("/main");
+        navigate("/compose");
     };
 
     useEffect(() => {
@@ -91,9 +91,9 @@ const Inbox = () => {
     return (
         <>
             <Header />
-            <div className="max-w-md mx-auto mt-8">
+            <div className="max-w-md mx-auto mt-40">
                 <div className="bg-white shadow-md p-6 rounded">
-                    <h2 className="text-2xl font-bold mb-4">Emails</h2>
+                    <h2 className="text-xl font-bold mb-4">Emails</h2>
                     <div className="mb-4">Unread: {unreadCount}</div>
                     <ul>
                         {filteredEmails.length > 0 ? (

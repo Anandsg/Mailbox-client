@@ -21,7 +21,7 @@ const SentEmail = () => {
 
 
     const backHandler = () => {
-        navigate("/main");
+        navigate("/compose");
     };
 
     console.log("Filtered Sent Emails:", senderData);
