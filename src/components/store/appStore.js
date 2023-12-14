@@ -1,10 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import emailReducer from './emailSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import emailReducer from "./emailSlice";
 
 const appStore = configureStore({
-    reducer: {
-        emails: emailReducer,
-    },
+  reducer: {
+    emails: emailReducer,
+  },
 });
 
 export default appStore;

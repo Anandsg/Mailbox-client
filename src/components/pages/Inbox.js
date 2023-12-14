@@ -13,10 +13,7 @@ const Inbox = () => {
     const userEmail = localStorage.getItem("userEmail");
     console.log(userEmail);
 
-
-
     const { deleteResource, isDeleting } = useDeleteRequest();
-
 
     const backHandler = () => {
         navigate("/compose");
@@ -35,7 +32,7 @@ const Inbox = () => {
     );
 
     const markEmailAsUnread = (emailId) => {
-        console.log(emailId)
+        console.log(emailId);
         fetch(
             `https://mailbox-client-62c32-default-rtdb.firebaseio.com/email/${emailId}.json`
         )
@@ -67,15 +64,16 @@ const Inbox = () => {
             });
     };
 
-
     const deleteEmail = (emailId) => {
-        deleteResource(`https://mailbox-client-62c32-default-rtdb.firebaseio.com/email/${emailId}.json`)
+        deleteResource(
+            `https://mailbox-client-62c32-default-rtdb.firebaseio.com/email/${emailId}.json`
+        )
             .then((data) => {
-                console.log('Email deleted from Firebase');
-                dispatch({ type: 'email/deleteEmail', payload: emailId });
+                console.log("Email deleted from Firebase");
+                dispatch({ type: "email/deleteEmail", payload: emailId });
             })
             .catch((error) => {
-                console.error('Error deleting email:', error);
+                console.error("Error deleting email:", error);
             });
     };
 
@@ -134,5 +132,5 @@ const Inbox = () => {
             </div>
         </>
     );
-}
+};
 export default Inbox;

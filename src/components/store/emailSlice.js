@@ -22,7 +22,6 @@ export const fetchEmails = createAsyncThunk("emails/fetchEmails", async () => {
   } else {
     return [];
   }
-
 });
 
 export const fetchEmailsPeriodically = createAsyncThunk(
